@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src:/app/src
+      - ./build:/app/build
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/vivaparis
+      SPRING_DATASOURCE_USERNAME: vivaparis
+      SPRING_DATASOURCE_PASSWORD: vivaparis123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      - db
+    networks:
+      - landingpage-network
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: vivaparis
+      POSTGRES_USER: vivaparis
+      POSTGRES_PASSWORD: vivaparis123
+    ports:
+      - "5432:5432"
+    networks:
+      - landingpage-network
+
+networks:
+  landingpage-network:
+    driver: bridge
