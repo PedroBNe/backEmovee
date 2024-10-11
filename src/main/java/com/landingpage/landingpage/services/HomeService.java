@@ -33,12 +33,14 @@ public class HomeService {
         Home existingHome = findById(id);
 
         if (existingHome != null) {
+
             if (updatedHome.getLogo() != null) {
                 existingHome.setLogo(updatedHome.getLogo());
             }
 
             if (updatedHome.getNavbar() != null) {
-                existingHome.setNavbar(updatedHome.getNavbar());
+                existingHome.getNavbar().clear();
+                existingHome.getNavbar().addAll(updatedHome.getNavbar());
             }
 
             if (updatedHome.getCarouselImages() != null) {
