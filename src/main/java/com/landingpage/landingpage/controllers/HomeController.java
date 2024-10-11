@@ -15,8 +15,8 @@ public class HomeController {
     private HomeService homeService;
 
     @GetMapping
-    public List<Home> getAllHomes() {
-        return homeService.findAll();
+    public Home getHome() {
+        return homeService.findHome();
     }
 
     @GetMapping("/{id}")

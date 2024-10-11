@@ -13,8 +13,8 @@ public class HomeService {
     @Autowired
     private HomeRepository homeRepository;
 
-    public List<Home> findAll() {
-        return homeRepository.findAll();
+    public Home findHome() {
+        return homeRepository.findById(1L).orElse(null);
     }
 
     public Home findById(Long id) {
