@@ -34,6 +34,7 @@ public class HomeController {
         homeService.deleteById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/{id}")
     public Home updateHome(@PathVariable Long id, @RequestBody Home updatedHome) {
         return homeService.updateHome(id, updatedHome);
